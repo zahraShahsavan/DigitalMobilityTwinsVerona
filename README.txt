@@ -2,14 +2,6 @@
 
 ## A Distributed Geospatial Digital Twin for Multi-Modal Urban Mobility Analysis and Similar-District Retrieval
 
-### Group Information
-
-**Student:** Zahra Shahsavan
-**Student ID:** VR526338
-**Email:** [zahra.shahsavan@studenti.univr.it](mailto:zahra.shahsavan@studenti.univr.it)
-**Group:** A
-
----
 
 # Project Overview
 
@@ -65,7 +57,7 @@ The project uses the following public datasets:
 * Vehicle circulation dataset
 * Numerazione Civica dataset
 * Parks and green areas dataset
-* ESA WorldCover GeoTIFF raster background
+* ESA WorldCover GeoTIFF raster background, it should be added to data folder with name of worldcover.tif
 
 ---
 
@@ -161,25 +153,6 @@ KNN computes cosine similarity between districts and retrieves the top similar n
 
 These results are used to color district borders on the final PNG map.
 
----
-
-# Author Contributions
-
-This project was fully completed by:
-
-**Zahra Shahsavan**
-
-Responsibilities included:
-
-* project design
-* dataset collection
-* preprocessing
-* feature engineering
-* Java implementation
-* Apache Spark integration
-* KNN similarity analysis
-* map rendering
-* validation
-* report writing
+This project is based on Spark for save and processing data in large scale map.
 
 ---
