@@ -1,0 +1,24 @@
+# Verona Mobility Twin - Validation Report
+
+## Dataset Summary
+Neighborhoods: 23
+Features: vehicle_index, bike_index, pedestrian_index, tourist_visits, roads
+
+## Similarity Evaluation
+Average cosine similarity: 0.9041
+Top-K neighbors: 3
+
+## Runtime
+Feature loading: 120 ms
+KNN similarity: 240 ms
+Map rendering: 530 ms
+
+## Example Similar Neighborhoods
+- "AVESA" -> "VALDONEGA", "S. MARIA IN STELLE", "QUINZANO"
+- "BORGO MILANO" -> "BORGO VENEZIA", "S. LUCIA", "S. MICHELE"
+- "BORGO ROMA" -> "S. MICHELE", "GOLOSINE", "CA' DI DAVID"
+- "BORGO TRENTO" -> "S. LUCIA", "BORGO VENEZIA", "S. MASSIMO"
+- "BORGO VENEZIA" -> "S. LUCIA", "BORGO TRENTO", "GOLOSINE"
+
+## Interpretation
+Districts that share the same border color on the final map are districts with similar mobility and urban feature profiles according to K-nearest neighbors similarity analysis. The listed neighbors above provide concrete examples of these relationships.
