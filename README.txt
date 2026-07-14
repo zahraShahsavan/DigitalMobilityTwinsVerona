@@ -2,43 +2,46 @@
 
 ## A Distributed Geospatial Digital Twin for Multi-Modal Urban Mobility Analysis and Similar-District Retrieval
 
+## Project Overview
 
-# Project Overview
+This project implements a lightweight **Urban Mobility Digital Twin** for the city of Verona using **Java** and **Apache Spark**. It integrates multiple public geospatial datasets to analyze urban mobility patterns and identify districts with similar characteristics using the **K-Nearest Neighbors (KNN)** algorithm.
 
-This project builds a lightweight **urban mobility digital twin of Verona** using Java and Apache Spark.
+The application generates:
 
-The system combines several public geospatial datasets from Verona and generates:
-
-* a final **PNG map visualization** of Verona
-* district boundaries
-* school locations
-* tourist attraction points
-* district similarity groups based on K-nearest neighbors (KNN)
-* a validation report summarizing similarity metrics and runtime performance
+- A high-resolution PNG map of Verona
+- District boundaries
+- School locations
+- Tourist attraction points
+- Similar district groups based on KNN
+- A validation report containing similarity metrics and runtime statistics
 
 Districts with similar mobility and urban characteristics are highlighted using the same border color on the final map.
 
 ---
 
-# Project Structure
+## Project Structure
 
-```bash
+```text
 mobilityTwins/
 │
-├── src/main/java/verona/mobilityTwins/
-│   ├── App.java
-│   ├── ValidationReport.java
+├── src/
+│   └── main/
+│       └── java/
+│           └── verona/
+│               └── mobilityTwins/
+│                   ├── App.java
+│                   └── ValidationReport.java
 │
 ├── data/
 │   ├── worldcover.tif
 │   ├── CS_OPENDATA_QUARTIERI_polygon.shp
 │   ├── SIGI 180 scuole.shp
 │   ├── veronacard_2020_opendata.csv
-│   ├── features.csv
+│   └── features.csv
 │
 ├── output/
 │   ├── verona_final_map.png
-│   ├── validation_report.txt
+│   └── validation_report.txt
 │
 ├── pom.xml
 └── README.md
@@ -46,113 +49,129 @@ mobilityTwins/
 
 ---
 
-# Datasets Used
+## Datasets
 
-The project uses the following public datasets:
+The project uses publicly available datasets provided by the **Comune di Verona** and other open-data sources.
 
-* Quartieri boundaries – Comune di Verona
-* Schools dataset – Comune di Verona
-* VeronaCard 2020 tourist attractions
-* Population dataset
-* Vehicle circulation dataset
-* Numerazione Civica dataset
-* Parks and green areas dataset
-* ESA WorldCover GeoTIFF raster background, it should be added to data folder with name of worldcover.tif
+Included datasets:
 
----
+- Verona district boundaries
+- School locations
+- VeronaCard 2020 tourist attractions
+- Population data
+- Vehicle circulation data
+- Street numbering dataset
+- Parks and green areas
+- ESA WorldCover raster map
 
-# Software Requirements
+> **Note:** Download the ESA WorldCover raster and place it in the `data` directory with the filename:
 
-Before running the project install:
-
-* Java 11 or newer
-* Apache Maven
-* Apache Spark 3.x
-* BEAST spatial library
-* GeoTools dependencies
+```text
+worldcover.tif
+```
 
 ---
 
-# How to Compile
+## Requirements
 
-Open terminal inside the project root directory:
+Before running the project, install:
+
+- Java 11 or newer
+- Apache Maven
+- Apache Spark 3.x
+- BEAST spatial library
+- GeoTools
+
+---
+
+## Compile
+
+From the project root directory, run:
 
 ```bash
 mvn clean package
 ```
 
-This compiles the project and downloads required dependencies.
+This command compiles the project and downloads all required dependencies.
 
 ---
 
-# How to Run
+## Run
 
-Run the application with:
+Execute the application with:
 
 ```bash
 mvn exec:java -Dexec.mainClass="verona.mobilityTwins.App"
+```
 
 ---
 
-# Output Files
+## Output
 
-After execution the project generates:
+### Final Map
 
-### 1. Final Map
-
-```bash
+```
 output/verona_final_map.png
 ```
 
-Contains:
+The generated map contains:
 
-* Verona district polygons
-* district borders colored by KNN similarity
-* school points
-* WorldCover geographic background raster
+- Verona district polygons
+- District borders colored according to KNN similarity
+- School locations
+- ESA WorldCover raster background
 
----
+### Validation Report
 
-### 2. Validation Report
-
-```bash
+```
 output/validation_report.txt
 ```
 
-Contains:
+The report includes:
 
-* number of districts
-* similarity metrics
-* nearest-neighbor results
-* cluster distribution
-* runtime performance
-* interpretation of results
+- Number of districts
+- Similarity metrics
+- Nearest-neighbor results
+- Cluster distribution
+- Runtime performance
+- Interpretation of the results
 
 ---
 
-# KNN Similarity
+## K-Nearest Neighbors (KNN)
 
-K-nearest neighbors is applied on:
+KNN is applied to the dataset:
 
-```bash
+```
 data/features.csv
 ```
 
-Each district is represented by:
+Each district is represented by several mobility and urban indicators, including:
 
-* tourist_visits
-* vehicles
-* schools
-* parks
-* roads
-* vehicle_index
-* bike_index
-* pedestrian_index
+- Tourist visits
+- Vehicle traffic
+- Number of schools
+- Parks
+- Road network
+- Vehicle index
+- Bicycle index
+- Pedestrian index
 
-KNN computes cosine similarity between districts and retrieves the top similar neighbors.
-
-These results are used to color district borders on the final PNG map.
-
-This project is based on Spark for save and processing data in large scale map.
+Cosine similarity is used to identify the most similar districts. The resulting similarity groups are visualized by assigning the same border color to similar districts on the final map.
 
 ---
+
+## Technologies
+
+- Java
+- Apache Spark
+- Apache Maven
+- GeoTools
+- BEAST Spatial Library
+- K-Nearest Neighbors (KNN)
+
+---
+
+## Results
+
+The project demonstrates how a lightweight distributed geospatial digital twin can integrate heterogeneous urban datasets to support mobility analysis and identify districts with similar urban characteristics. The generated visualization and validation report provide an interpretable overview of the similarity analysis.
