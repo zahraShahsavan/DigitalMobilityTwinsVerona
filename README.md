@@ -1,15 +1,7 @@
 # Verona Mobility Twin
 
-## A Distributed Geospatial Digital Twin for Multi-Modal Urban Mobility Analysis and Similar-District Retrieval
+## A Distributed Geospatial Digital Twin for Multi-Modal Urban Mobility Analysis and Similar-District Retrieval, Using Spark to store and process data
 
-### Group Information
-
-**Student:** Zahra Shahsavan
-**Student ID:** VR526338
-**Email:** [zahra.shahsavan@studenti.univr.it](mailto:zahra.shahsavan@studenti.univr.it)
-**Group:** A
-
----
 
 # Project Overview
 
@@ -161,25 +153,5 @@ KNN computes cosine similarity between districts and retrieves the top similar n
 
 These results are used to color district borders on the final PNG map.
 
----
-
-# Author Contributions
-
-This project was fully completed by:
-
-**Zahra Shahsavan**
-
-Responsibilities included:
-
-* project design
-* dataset collection
-* preprocessing
-* feature engineering
-* Java implementation
-* Apache Spark integration
-* KNN similarity analysis
-* map rendering
-* validation
-* report writing
 
 ---
